@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SehatInfo — Informasi Kesehatan & Obat</title>
+  <meta name="description" content="Portal informasi kesehatan dan obat terpercaya untuk Indonesia" />
+
+  <!-- ================================
+       LINK ke styles.css yang terpisah
+  ================================= -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ================================================
+       NAVBAR
+  ================================================= -->
+  <nav class="navbar">
+    <a href="#" class="logo">
+      <div class="logo-icon">🌿</div>
+      <div class="logo-text">Sehat<span>Info</span></div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#kesehatan">Kesehatan</a></li>
+      <li><a href="#obat">Obat</a></li>
+      <li><a href="#tips">Tips</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#kontak" class="nav-cta">Konsultasi</a></li>
+    </ul>
+
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+
+  <!-- ================================================
+       HERO SECTION
+  ================================================= -->
+  <section class="hero" id="beranda">
+
+    <!-- Dekorasi lingkaran latar -->
+    <div class="hero-bg-decor">
+      <div class="circle-1"></div>
+      <div class="circle-2"></div>
+      <div class="circle-3"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>🩺</span> Portal Kesehatan Terpercaya
+      </div>
+
+      <h1 class="hero-title">
+        Informasi <span class="highlight">Kesehatan</span><br>
+        & Obat untuk Anda
+      </h1>
+
+      <p class="hero-desc">
+        Temukan panduan kesehatan, informasi obat, dan tips hidup sehat yang akurat,
+        mudah dipahami, dan dapat diandalkan oleh seluruh keluarga Indonesia.
+      </p>
+
+      <div class="hero-btns">
+        <a href="#kategori" class="btn-primary">
+    🔍 Jelajahi Artikel
+</a>
+        <a href="#obat"      class="btn-secondary">💊 Cari Obat</a>
+        <a href="#Tips Sehat" class="btn-primary">✨ Tips Sehat</a>
+
+        
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">
+            <span class="counter" data-target="1200">0</span><span>+</span>
+          </div>
+          <div class="stat-label">Artikel Kesehatan</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">
+            <span class="counter" data-target="850">0</span><span>+</span>
+          </div>
+          <div class="stat-label">Data Obat</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">
+            <span class="counter" data-target="50">0</span><span>K+</span>
+          </div>
+          <div class="stat-label">Pengguna Aktif</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+    <!-- ================================================
+     KATEGORI & ARTIKEL KESEHATAN
+================================================= -->
+<section class="categories" id="kategori"><!-- HALAMAN 1 : KATEGORI -->
+<div id="kategoriPage">
+
+    <div class="section-header">
+        <div class="section-tag">📂 KATEGORI</div>
+        <h2 class="section-title">Temukan Topik Kesehatanmu</h2>
+        <p>Pilih kategori untuk menemukan artikel dan panduan yang relevan</p>
+    </div>
+
+    <div class="search-box">
+        <span class="search-icon">🔍</span>
+
+        <input
+            type="text"
+            class="search-input"
+            placeholder="Cari artikel kesehatan..."
+        >
+
+        <button class="search-btn">
+            Cari
+        </button>
+    </div>
+
+    <div class="cat-grid">
+
+        <div class="cat-card" onclick="showCategory('olahraga')">
+            <div class="cat-icon">🏃</div>
+            <h3>Olahraga</h3>
+            <p>Artikel olahraga dan gaya hidup sehat</p>
+        </div>
+
+        <div class="cat-card" onclick="showCategory('penyakit')">
+            <div class="cat-icon">🩺</div>
+            <h3>Penyakit</h3>
+            <p>Informasi penyakit dan pencegahan</p>
+        </div>
+
+        <div class="cat-card" onclick="showCategory('kesehatan')">
+            <div class="cat-icon">❤️</div>
+            <h3>Kesehatan</h3>
+            <p>Panduan menjaga kesehatan tubuh</p>
+        </div>
+
+        <div class="cat-card" onclick="showCategory('nutrisi')">
+            <div class="cat-icon">🥗</div>
+            <h3>Nutrisi</h3>
+            <p>Informasi makanan dan gizi</p>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- HALAMAN 2 : ARTIKEL -->
+<div id="artikelPage" style="display:none;">
+
+    <button class="back-btn" onclick="backToCategory()">
+        ← Kembali ke Kategori
+    </button>
+
+    <h2 id="judulKategori"></h2>
+
+    <div id="artikelContainer">
+
+        <!-- OLAHRAGA -->
+        <div class="kategori-artikel" id="olahraga" style="display:none;">
+
+            <a class="artikel-card" href="https://www.alodokter.com/manfaat-olahraga-bagi-kesehatan" target="_blank">
+                🏃 Manfaat Olahraga bagi Kesehatan Tubuh
+            </a>
+
+            <a class="artikel-card" href="https://www.halodoc.com/kesehatan/olahraga" target="_blank">
+                ⚽ Olahraga: Tujuan dan Manfaatnya
+            </a>
+
+            <a class="artikel-card" href="https://www.halodoc.com/artikel/ini-6-manfaat-jalan-kaki-setiap-30-menit-setiap-hari" target="_blank">
+                🚶 6 Manfaat Jalan Kaki 30 Menit Setiap Hari
+            </a>
+
+            <a class="artikel-card" href="https://www.halodoc.com/artikel/berbagai-manfaat-olahraga-high-intensity-interval-training-hiit" target="_blank">
+                💪 Manfaat HIIT untuk Kesehatan
+            </a>
+
+        </div>
+
+        <!-- PENYAKIT -->
+        <div class="kategori-artikel" id="penyakit" style="display:none;">
+
+            <a class="artikel-card" href="https://www.alodokter.com/hipertensi" target="_blank">
+                🩸 Hipertensi: Penyebab dan Pencegahan
+            </a>
+
+            <a class="artikel-card" href="https://www.alodokter.com/diabetes-tipe-2" target="_blank">
+                🍬 Diabetes Tipe 2
+            </a>
+
+            <a class="artikel-card" href="https://www.alodokter.com/asma" target="_blank">
+                🫁 Asma: Gejala dan Pengobatan
+            </a>
+
+            <a class="artikel-card" href="https://www.alodokter.com/demam-berdarah-dengue" target="_blank">
+                🦟 Demam Berdarah Dengue
+            </a>
+
+        </div>
+
+        <!-- KESEHATAN -->
+        <div class="kategori-artikel" id="kesehatan" style="display:none;">
+
+            <a class="artikel-card" href="https://www.alodokter.com/cara-meningkatkan-daya-tahan-tubuh" target="_blank">
+                🌿 Cara Meningkatkan Daya Tahan Tubuh
+            </a>
+
+            <a class="artikel-card" href="https://www.alodokter.com/ingin-tidur-sehat-terapkan-5-tips-ini" target="_blank">
+                😴 Tips Tidur Sehat
+            </a>
+
+            <a class="artikel-card" href="https://www.halodoc.com/artikel/6-cara-meningkatkan-daya-tahan-tubuh" target="_blank">
+                🛡️ Cara Menjaga Imunitas Tubuh
+            </a>
+
+            <a class="artikel-card" href="https://www.halodoc.com/artikel/ini-manfaat-minum-air-putih-yang-cukup" target="_blank">
+                💧 Manfaat Minum Air Putih
+            </a>
+
+        </div>
+
+        <!-- NUTRISI -->
+        <div class="kategori-artikel" id="nutrisi" style="display:none;">
+
+            <a class="artikel-card" href="https://www.alodokter.com/10-makanan-peningkat-sistem-imun-tubuh" target="_blank">
+                🍎 10 Makanan Peningkat Imunitas
+            </a>
+
+            <a class="artikel-card" href="https://www.halodoc.com/artikel/imun-pengertian-fungsi-jenis-cara-kerja-sistem-kekebalan-tubuh" target="_blank">
+                🥗 Nutrisi dan Sistem Kekebalan Tubuh
+            </a>
+
+            <a class="artikel-card" href="https://www.alodokter.com/panduan-gizi-seimbang-untuk-keluarga" target="_blank">
+                🍽️ Panduan Gizi Seimbang
+            </a>
+
+            <a class="artikel-card" href="https://www.halodoc.com/artikel/manfaat-buah-dan-sayur-bagi-kesehatan" target="_blank">
+                🥦 Manfaat Buah dan Sayur
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+</section>
+
+  <!-- ================================================
+       PENCARIAN OBAT
+  ================================================= -->
+  <section class="obat" id="obat">
+    <div class="section-header reveal">
+      <div class="section-tag">💊 Database Obat</div>
+      <h2 class="section-title">Cari Informasi Obat</h2>
+      <p class="section-subtitle">Temukan dosis, efek samping, dan kontraindikasi obat yang Anda butuhkan</p>
+    </div>
+
+    <!-- Kotak Pencarian -->
+    <div class="search-box reveal">
+      <span class="search-icon">🔍</span>
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Ketik nama obat, misalnya: Paracetamol, Amoxicillin..."
+        aria-label="Cari obat"
+      />
+      <button class="search-btn">Cari</button>
+    </div>
+
+    <!-- Kartu Obat -->
+    <div id="obatPage"><div class="obat-grid">
+
+    <div class="obat-card" onclick="showObat('paracetamol')">
+        <div class="obat-icon-wrap">💊</div>
+        <div class="obat-name">Paracetamol</div>
+        <div class="obat-class">Analgesik & Antipiretik</div>
+    </div>
+
+    <div class="obat-card" onclick="showObat('amoxicillin')">
+        <div class="obat-icon-wrap">🔵</div>
+        <div class="obat-name">Amoxicillin</div>
+        <div class="obat-class">Antibiotik Penisilin</div>
+    </div>
+
+    <div class="obat-card" onclick="showObat('ibuprofen')">
+        <div class="obat-icon-wrap">🔴</div>
+        <div class="obat-name">Ibuprofen</div>
+        <div class="obat-class">NSAID</div>
+    </div>
+
+    <div class="obat-card" onclick="showObat('antasida')">
+        <div class="obat-icon-wrap">🟡</div>
+        <div class="obat-name">Antasida</div>
+        <div class="obat-class">Gangguan Lambung</div>
+    </div>
+
+</div>
+
+</div><div id="detailObatPage" style="display:none;"><button class="back-btn" onclick="backToObat()">
+    ← Kembali ke Daftar Obat
+</button>
+
+<div id="paracetamol" class="detail-obat" style="display:none;">
+    <h2>💊 Paracetamol</h2>
+    <p><b>Nama Generik:</b> Acetaminophen</p>
+    <p><b>Fungsi:</b> Menurunkan demam dan meredakan nyeri.</p>
+    <p><b>Dosis Dewasa:</b> 500–1000 mg setiap 4–6 jam.</p>
+    <p><b>Efek Samping:</b> Mual, ruam kulit, gangguan hati jika berlebihan.</p>
+</div>
+
+<div id="amoxicillin" class="detail-obat" style="display:none;">
+    <h2>🔵 Amoxicillin</h2>
+    <p><b>Nama Generik:</b> Amoxicillin Trihydrate</p>
+    <p><b>Fungsi:</b> Mengobati infeksi bakteri.</p>
+    <p><b>Dosis:</b> Sesuai resep dokter.</p>
+    <p><b>Efek Samping:</b> Diare, mual, alergi.</p>
+</div>
+
+<div id="ibuprofen" class="detail-obat" style="display:none;">
+    <h2>🔴 Ibuprofen</h2>
+    <p><b>Fungsi:</b> Mengurangi nyeri dan peradangan.</p>
+    <p><b>Dosis Dewasa:</b> 200–400 mg setiap 4–6 jam.</p>
+    <p><b>Efek Samping:</b> Sakit lambung, pusing.</p>
+</div>
+
+<div id="antasida" class="detail-obat" style="display:none;">
+    <h2>🟡 Antasida</h2>
+    <p><b>Fungsi:</b> Mengatasi maag dan asam lambung.</p>
+    <p><b>Dosis:</b> Ikuti petunjuk kemasan.</p>
+    <p><b>Efek Samping:</b> Sembelit atau diare.</p>
+</div>
+
+</div>
+  </section>
+
+
+  <!-- ================================================
+       TIPS KESEHATAN
+  ================================================= -->
+  <section class="tips" id="tips">
+    <div class="section-header reveal">
+      <div class="section-tag">✨ Tips Sehat</div>
+      <h2 class="section-title">Kebiasaan Sehat Sehari-hari</h2>
+      <p class="section-subtitle">Langkah kecil yang konsisten membawa perubahan besar bagi kesehatan Anda</p>
+    </div>
+
+    <div class="tips-grid">
+      <div class="tip-card reveal" data-delay="0">
+        <div class="tip-number">01</div>
+        <div class="tip-icon">💧</div>
+        <div class="tip-title">Minum Air Putih Cukup</div>
+        <div class="tip-desc">Konsumsi minimal 8 gelas (2 liter) air putih per hari. Dehidrasi ringan pun dapat menurunkan konsentrasi dan energi secara signifikan.</div>
+        <div class="tip-tag">💡 Kesehatan Dasar</div>
+      </div>
+      <div class="tip-card reveal" data-delay="100">
+        <div class="tip-number">02</div>
+        <div class="tip-icon">🥗</div>
+        <div class="tip-title">Pola Makan Bergizi Seimbang</div>
+        <div class="tip-desc">Penuhi piring makan Anda dengan separuh sayur & buah, seperempat karbohidrat kompleks, dan seperempat protein berkualitas.</div>
+        <div class="tip-tag">🍽️ Nutrisi</div>
+      </div>
+      <div class="tip-card reveal" data-delay="200">
+        <div class="tip-number">03</div>
+        <div class="tip-icon">🏃‍♂️</div>
+        <div class="tip-title">Aktif Bergerak Setiap Hari</div>
+        <div class="tip-desc">Lakukan aktivitas fisik intensitas sedang minimal 150 menit per minggu. Bisa jalan kaki, bersepeda, atau renang.</div>
+        <div class="tip-tag">💪 Aktivitas Fisik</div>
+      </div>
+      <div class="tip-card reveal" data-delay="300">
+        <div class="tip-number">04</div>
+        <div class="tip-icon">😴</div>
+        <div class="tip-title">Tidur Berkualitas 7–9 Jam</div>
+        <div class="tip-desc">Tidur cukup memperbaiki sel, memperkuat sistem imun, dan menjaga keseimbangan hormon metabolisme tubuh Anda.</div>
+        <div class="tip-tag">🌙 Istirahat</div>
+      </div>
+      <div class="tip-card reveal" data-delay="400">
+        <div class="tip-number">05</div>
+        <div class="tip-icon">🧘‍♀️</div>
+        <div class="tip-title">Kelola Stres dengan Bijak</div>
+        <div class="tip-desc">Praktikkan meditasi, pernapasan dalam, atau hobi yang Anda sukai untuk menjaga kesehatan mental dan fisik secara bersamaan.</div>
+        <div class="tip-tag">🧠 Kesehatan Mental</div>
+      </div>
+      <div class="tip-card reveal" data-delay="500">
+        <div class="tip-number">06</div>
+        <div class="tip-icon">🩺</div>
+        <div class="tip-title">Rutin Periksa Kesehatan</div>
+        <div class="tip-desc">Lakukan medical check-up minimal setahun sekali meski merasa sehat. Deteksi dini jauh lebih mudah dan murah untuk ditangani.</div>
+        <div class="tip-tag">🏥 Pencegahan</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================
+       FAQ
+================================================= -->
+<section id="faq">
+
+    <div class="section-header reveal">
+        <div class="section-tag">❓ FAQ</div>
+        <h2 class="section-title">Pertanyaan yang Sering Diajukan</h2>
+        <p class="section-subtitle">
+            Jawaban atas pertanyaan umum seputar kesehatan dan penggunaan obat
+        </p>
+    </div>
+
+    <div class="faq-list">
+
+        <div class="faq-item reveal open">
+            <div class="faq-question">
+                Apakah aman mengonsumsi obat tanpa resep dokter?
+                <div class="faq-icon">+</div>
+            </div>
+            <div class="faq-answer">
+                Obat bebas (OTC) umumnya aman bila dikonsumsi sesuai petunjuk pada kemasan.
+                Namun untuk kondisi kronis atau gejala yang tidak kunjung membaik dalam 3–5 hari,
+                sangat disarankan untuk berkonsultasi dengan dokter agar mendapat diagnosis dan terapi yang tepat.
+            </div>
+        </div>
+
+        <div class="faq-item reveal">
+            <div class="faq-question">
+                Bolehkah minum dua obat berbeda secara bersamaan?
+                <div class="faq-icon">+</div>
+            </div>
+            <div class="faq-answer">
+                Interaksi antar obat dapat terjadi dan berisiko. Sebelum mengombinasikan obat,
+                selalu konsultasikan dengan dokter atau apoteker.
+            </div>
+        </div>
+
+        <div class="faq-item reveal">
+            <div class="faq-question">
+                Berapa lama antibiotik harus dikonsumsi?
+                <div class="faq-icon">+</div>
+            </div>
+            <div class="faq-answer">
+                Antibiotik harus dikonsumsi hingga habis sesuai resep dokter,
+                umumnya 5–14 hari tergantung jenis infeksi.
+            </div>
+        </div>
+
+        <div class="faq-item reveal">
+            <div class="faq-question">
+                Bagaimana cara menyimpan obat yang benar?
+                <div class="faq-icon">+</div>
+            </div>
+            <div class="faq-answer">
+                Simpan obat di tempat sejuk, kering, dan terhindar dari sinar matahari langsung.
+                Periksa selalu tanggal kedaluwarsa sebelum mengonsumsi.
+            </div>
+        </div>
+
+        <div class="faq-item reveal">
+            <div class="faq-question">
+                Kapan harus ke UGD dan kapan cukup ke Puskesmas?
+                <div class="faq-icon">+</div>
+            </div>
+            <div class="faq-answer">
+                Segera ke UGD jika mengalami nyeri dada hebat, sesak napas,
+                stroke, atau cedera berat.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ==================================
+         TANYA KESEHATAN INTERAKTIF
+    =================================== -->
+
+    <div class="faq-item">
+
+    <div class="faq-question">
+        💊 Apakah aman mengonsumsi obat tanpa resep dokter?
+        <span class="faq-icon">+</span>
+    </div>
+
+    <div class="faq-answer">
+        Obat bebas (OTC) umumnya aman bila dikonsumsi sesuai petunjuk pada kemasan...
+    </div>
+
+</div>
+
+    <div class="faq-chat">
+
+    <h3>💬 Tanya Seputar Kesehatan</h3>
+
+    <div id="faqBulletin" class="faq-bulletin">
+
+        <div class="faq-bot">
+            👨‍⚕️ Selamat datang di FAQ Kesehatan. Silakan ketik pertanyaan Anda.
+        </div>
+
+    </div>
+
+    <input
+        type="text"
+        id="faqInput"
+        placeholder="Ketik pertanyaan Anda..."
+    >
+
+    <button type="button" onclick="kirimPertanyaan()">
+        Kirim
+    </button>
+
+</div>
+
+        <div id="faqHasil"></div>
+
+    </div>
+
+</section>
+
+  <!-- ================================================
+       BANNER DARURAT
+  ================================================= -->
+  <div class="darurat-banner">
+    <div class="darurat-text">
+      <h3>🚨 Keadaan Darurat Medis?</h3>
+      <p>Hubungi layanan gawat darurat segera. Jangan tunda pertolongan pertama.</p>
+    </div>
+    <a href="RSUD Dr. Doris Sylvanus: (0536) 3224695" class="darurat-num">
+      <span>📞</span> RSUD Dr. Doris Sylvanus: (0536) 3224695 (Emergency)
+      <a href="RS Bhayangkara : 0811-5253-222" class="darurat-num">
+      <span>📞</span> RS Bhayangkara Palangka Raya: 0811-5253-222 (Emergency)
+    </a>
+  </div>
+
+
+  <!-- ================================================
+       FOOTER
+  ================================================= -->
+  <footer id="kontak">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo" style="margin-bottom:0;">
+          <div class="logo-icon" style="width:36px;height:36px;font-size:18px;">🌿</div>
+          <div class="logo-text" style="font-size:1.1rem;">Sehat<span>Info</span></div>
+        </a>
+        <p>Portal informasi kesehatan dan obat terpercaya untuk seluruh keluarga Indonesia. Konten kami ditinjau oleh tim dokter profesional.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Layanan</h4>
+        <ul class="footer-links">
+          <li><a href="#">Cari Informasi Obat</a></li>
+          <li><a href="#">Artikel Kesehatan</a></li>
+          <li><a href="#">Konsultasi Online</a></li>
+          <li><a href="#">Cek Gejala</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Tentang</h4>
+        <ul class="footer-links">
+          <li><a href="C:\Users\TECNO\Downloads\web_bu,purna\kegunaan website. w">Kegunaan website ini</a></li>
+          <li><a href="C:\Users\TECNO\Downloads\web_bu,purna\penting">Hal penting yang harus diperhatikan </a></li>
+          <li><a href="C:\Users\TECNO\Downloads\web_bu,purna\metodologi konten">Metodologi Konten</a></li>
+          <li><a href="C:\Users\TECNO\Downloads\web_bu,purna\kebijakan privasi">Kebijakan Privasi</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Hubungi</h4>
+        <ul class="footer-links">
+          <li><a href="https://www.instagram.com/rsuddrdorissylvanus/">📱 Instagram</a></li>
+          <li><a href="https://www.instagram.com/rsbhayangkara_palangkaraya/">📱 Instagram</a></li>
+          <li><a href="https://youtu.be/9IuilMiKcTo?si=hTFslbkcKIDpBquL">▶️ YouTube</a></li>
+          <li><a href="https://youtu.be/s7x45lDcTbk?si=ek34LES_LKWPLpez">▶️ YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 SehatInfo. Dibuat dengan ❤️ untuk kesehatan Indonesia. Konten bersifat informatif, bukan pengganti diagnosis medis.</p>
+      <div class="social-links">
+  </footer>
+
+
+  <!-- ================================
+       LINK ke script.js yang terpisah
+  ================================= -->
+  <script src="script.js"></script>
+  <script>
+function showCategory(kategori){
+
+    document.getElementById("kategoriPage").style.display="none";
+    document.getElementById("artikelPage").style.display="block";
+
+    document.querySelectorAll(".kategori-artikel").forEach(item=>{
+        item.style.display="none";
+    });
+
+    document.getElementById(kategori).style.display="flex";
+
+    document.getElementById("judulKategori").innerHTML =
+        "📚" +
+        kategori.charAt(0).toUpperCase() +
+        kategori.slice(1);
+}
+
+function backToCategory(){
+    document.getElementById("artikelPage").style.display="none";
+    document.getElementById("kategoriPage").style.display="block";
+}
+</script>
+</body>
+</html>
