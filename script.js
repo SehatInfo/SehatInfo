@@ -13,6 +13,26 @@ window.addEventListener('scroll', () => {
   }
 });
 
+// =====================================
+// NAVIGASI HALAMAN
+// =====================================
+
+function showPage(pageId){
+
+    document.querySelectorAll(".page")
+    .forEach(page=>{
+        page.style.display="none";
+    });
+
+    const target =
+    document.getElementById(pageId);
+
+    if(target){
+        target.style.display="block";
+        window.scrollTo(0,0);
+    }
+}
+
 // ========== 2. HAMBURGER MENU ==========
 const hamburger = document.querySelector('.hamburger');
 const navLinks  = document.querySelector('.nav-links');
@@ -145,265 +165,530 @@ function showToast(pesan, tipe = 'sukses') {
 }
 
 
-// ========== 13. ARTIKEL CARD DROPDOWN ==========
+// =========================
+// DATA PENCARIAN
+// =========================
 
-document.addEventListener("DOMContentLoaded", function(){
+const searchData = {
 
-    const buttons =
-    document.querySelectorAll(".kategori-btn");
+    olahraga:[
+        "olahraga",
+        "jalan kaki",
+        "hiit",
+        "fitness",
+        "latihan"
+    ],
 
-    const lists =
-    document.querySelectorAll(".article-list-expand");
+    penyakit:[
+        "penyakit",
+        "hipertensi",
+        "diabetes",
+        "asma",
+        "dbd",
+        "demam berdarah"
+    ],
 
-    buttons.forEach(button=>{
+    kesehatan:[
+        "kesehatan",
+        "imunitas",
+        "daya tahan tubuh",
+        "tidur",
+        "air putih"
+    ],
 
-        button.addEventListener("click", function(e){
-
-            e.preventDefault();
-
-            buttons.forEach(btn=>{
-                btn.classList.remove("active");
-            });
-
-            lists.forEach(list=>{
-                list.classList.remove("active");
-            });
-
-            this.classList.add("active");
-
-            const target =
-            this.getAttribute("data-target");
-
-            const targetElement =
-            document.getElementById(target);
-
-            if(targetElement){
-                targetElement.classList.add("active");
-            }
-
-            const kategoriArtikel = {
-
-            olahraga:[
-            {
-            logo:"🏃",
-            judul:"Manfaat Olahraga Rutin",
-            desk:"Olahraga rutin membantu menjaga kesehatan jantung.",
-            link:"https://www.halodoc.com/kesehatan/olahraga"
-            },
-            {
-            logo:"💪",
-            judul:"10 Gerakan Pemanasan",
-            desk:"Pemanasan sebelum olahraga sangat penting.",
-            link:"https://www.halodoc.com/artikel/berbagai-manfaat-olahraga-high-intensity-interval-training-hiit"
-            },
-            {
-            logo:"🚶",
-            judul:"Manfaat Jalan Kaki",
-            desk:"Jalan kaki 30 menit setiap hari.",
-            link:"https://www.halodoc.com/artikel/ini-6-manfaat-jalan-kaki-setiap-30-menit-setiap-hari"
-            },
-            {
-            logo:"⚽",
-            judul:"Olahraga untuk Semua Usia",
-            desk:"Tips olahraga yang aman.",
-            link:"https://www.halodoc.com/kesehatan/olahraga"
-            },
-            {
-            logo:"🏋️",
-            judul:"Menjaga Konsistensi Latihan",
-            desk:"Cara tetap semangat berolahraga.",
-            link:"https://www.alodokter.com/manfaat-olahraga-bagi-kesehatan"
-            }
-            ],
-
-            penyakit:[
-            {
-            logo:"🩸",
-            judul:"Hipertensi",
-            desk:"Penyebab dan cara mengatasinya.",
-            link:"https://www.alodokter.com/hipertensi"
-            },
-            {
-            logo:"💉",
-            judul:"Diabetes",
-            desk:"Kenali gejala diabetes.",
-            link:"https://www.alodokter.com/diabetes"
-            },
-            {
-            logo:"🫁",
-            judul:"Asma",
-            desk:"Gejala dan pengobatan asma.",
-            link:"https://www.alodokter.com/asma"
-            },
-            {
-            logo:"❤️",
-            judul:"Penyakit Jantung",
-            desk:"Penyakit jantung koroner.",
-            link:"https://www.alodokter.com/penyakit-jantung-koroner"
-            },
-            {
-            logo:"🤒",
-            judul:"Demam Berdarah",
-            desk:"Pencegahan DBD.",
-            link:"https://www.alodokter.com/demam-berdarah"
-            }
-            ],
-
-            kesehatan:[
-            {
-            logo:"❤️",
-            judul:"Pola Hidup Sehat",
-            desk:"Menjaga kesehatan tubuh.",
-            link:"https://www.alodokter.com/tips-hidup-sehat"
-            },
-            {
-            logo:"💧",
-            judul:"Minum Air yang Cukup",
-            desk:"Pentingnya hidrasi.",
-            link:"https://www.alodokter.com/cara-menjaga-kesehatan-tubuh"
-            },
-            {
-            logo:"😴",
-            judul:"Tidur Berkualitas",
-            desk:"Tidur cukup setiap hari.",
-            link:"https://www.alodokter.com/ingin-tidur-sehat-terapkan-5-tips-ini"
-            },
-            {
-            logo:"🧘",
-            judul:"Kelola Stres",
-            desk:"Menjaga kesehatan mental.",
-            link:"https://www.halodoc.com/artikel/6-cara-meningkatkan-daya-tahan-tubuh"
-            },
-            {
-            logo:"🏥",
-            judul:"Medical Check-Up",
-            desk:"Pentingnya pemeriksaan rutin.",
-            link:"https://www.siloamhospitals.com"
-            }
-            ],
-
-            nutrisi:[
-            {
-            logo:"🥗",
-            judul:"Gizi Seimbang",
-            desk:"Pedoman gizi sehat.",
-            link:"https://www.alodokter.com/gizi-seimbang"
-            },
-            {
-            logo:"🍎",
-            judul:"Buah untuk Imunitas",
-            desk:"Buah yang meningkatkan imun.",
-            link:"https://www.alodokter.com/10-makanan-peningkat-sistem-imun-tubuh"
-            },
-            {
-            logo:"🥕",
-            judul:"Sayuran Bergizi",
-            desk:"Nutrisi penting bagi tubuh.",
-            link:"https://www.halodoc.com/kesehatan/nutrisi"
-            },
-            {
-            logo:"🥛",
-            judul:"Manfaat Susu",
-            desk:"Sumber kalsium yang baik.",
-            link:"https://www.halodoc.com"
-            },
-            {
-            logo:"🍗",
-            judul:"Protein Harian",
-            desk:"Pentingnya protein.",
-            link:"https://www.alodokter.com/makanan-sehat"
-            }
-            ]
+    nutrisi:[
+        "nutrisi",
+        "gizi",
+        "vitamin",
+        "buah",
+        "sayur",
+        "protein"
+    ]
 
 };
 
-function showCategory(kategori) {
 
-    // Sembunyikan halaman kategori
-    document.getElementById("kategoriPage").style.display = "none";
+// =========================
+// TAMPILKAN KATEGORI
+// =========================
 
-    // Tampilkan halaman artikel
-    document.getElementById("artikelPage").style.display = "block";
+function showCategory(kategori){
 
-    // Sembunyikan semua kategori artikel
-    let semuaKategori = document.querySelectorAll(".kategori-artikel");
-    semuaKategori.forEach(item => {
-        item.style.display = "none";
+    document.getElementById("kategoriPage").style.display="none";
+
+    document.getElementById("catGrid").style.display = "none";
+
+    document.getElementById("artikelPage").style.display="block";
+
+    document.querySelectorAll(".kategori-artikel")
+    .forEach(el=>{
+        el.style.display="none";
     });
 
-    // Tampilkan kategori yang dipilih
-    document.getElementById(kategori).style.display = "block";
+    document.getElementById(kategori).style.display="flex";
 
-    // Ubah judul kategori
-    let judul = "";
+    const judulMap={
+        olahraga:"🏃 Bulletin Olahraga",
+        penyakit:"🩺 Bulletin Penyakit",
+        kesehatan:"❤️ Bulletin Kesehatan",
+        nutrisi:"🥗 Bulletin Nutrisi"
+    };
 
-    if (kategori === "olahraga") {
-        judul = "🏃 Bulletin Olahraga";
-    } else if (kategori === "penyakit") {
-        judul = "🩺 Bulletin Penyakit";
-    } else if (kategori === "kesehatan") {
-        judul = "❤️ Bulletin Kesehatan";
-    } else if (kategori === "nutrisi") {
-        judul = "🥗 Bulletin Nutrisi";
-    }
-
-    document.getElementById("judulKategori").innerHTML = judul;
+    document.getElementById("judulKategori")
+    .innerHTML=judulMap[kategori];
 }
 
-function backToCategory() {
-    document.getElementById("artikelPage").style.display = "none";
-    document.getElementById("kategoriPage").style.display = "block";
+
+// =========================
+// KEMBALI
+// =========================
+
+function backToCategory(){
+
+    document.getElementById("artikelPage").style.display="none";
+
+    document.getElementById("kategoriPage").style.display="block";
 }
+
+
+// =========================
+// PENCARIAN REALTIME
+// =========================
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    const input =
+    document.getElementById("articleSearch");
+
+    const result =
+    document.getElementById("searchResult");
+
+    input.addEventListener("keyup",()=>{
+
+        let keyword =
+        input.value.toLowerCase().trim();
+
+        result.innerHTML="";
+
+        if(keyword===""){
+            result.style.display="none";
+            return;
+        }
+
+        let ditemukan=[];
+
+        Object.keys(searchData).forEach(kategori=>{
+
+            searchData[kategori].forEach(kata=>{
+
+                if(kata.includes(keyword)){
+
+                    if(!ditemukan.includes(kategori)){
+                        ditemukan.push(kategori);
+                    }
+
+                }
+
+            });
+
         });
+
+        if(ditemukan.length===0){
+
+            result.innerHTML=
+            `<div class="search-item">
+                Tidak ditemukan
+            </div>`;
+
+            result.style.display="block";
+            return;
+        }
+
+        ditemukan.forEach(kategori=>{
+
+            let nama="";
+
+            if(kategori==="olahraga")
+                nama="🏃  Olahraga";
+
+            if(kategori==="penyakit")
+                nama="🩺  Penyakit";
+
+            if(kategori==="kesehatan")
+                nama="❤️  Kesehatan";
+
+            if(kategori==="nutrisi")
+                nama="🥗  Nutrisi";
+
+            result.innerHTML+=`
+                <div class="search-item"
+                     onclick="pilihKategori('${kategori}')">
+
+                     ${nama}
+                </div>
+            `;
+        });
+
+        result.style.display="block";
 
     });
 
 });
-// =====================================
-// DETAIL OBAT
-// =====================================
 
-function showObat(id) {
 
-    const obatPage = document.getElementById("obatPage");
-    const detailPage = document.getElementById("detailObatPage");
+// =========================
+// PILIH HASIL PENCARIAN
+// =========================
 
-    if (obatPage) {
-        obatPage.style.display = "none";
+function pilihKategori(kategori){
+
+    document.getElementById("searchResult")
+    .style.display="none";
+
+    document.getElementById("articleSearch")
+    .value="";
+
+    showCategory(kategori);
+}
+
+
+// =========================
+// TUTUP POPUP JIKA KLIK LUAR
+// =========================
+document.addEventListener("click",(e)=>{
+
+    const box =
+    document.querySelector(".search-box");
+
+    const result =
+    document.getElementById("searchResult");
+
+    if(!box || !result) return;
+
+    if(!box.contains(e.target)){
+
+        result.style.display="none";
+
     }
 
-    if (detailPage) {
-        detailPage.style.display = "block";
+});
+
+// =====================================
+// SHOW DETAIL
+// =====================================
+function showObat(id){
+
+    const data = obatDatabase[id];
+
+    if(!data) return;
+
+    document.getElementById("detailObatPage").style.display="block";
+
+    document.getElementById("detailObatContainer").innerHTML=`
+
+        <div class="detail-obat">
+
+            <h2>${data.icon} ${data.nama}</h2>
+
+            <p><b>Nama Generik :</b> ${data.generik}</p>
+
+            <p><b>Golongan :</b> ${data.golongan}</p>
+
+            <p><b>Fungsi :</b> ${data.fungsi}</p>
+
+            <p><b>Dosis :</b> ${data.dosis}</p>
+
+            <p><b>Efek Samping :</b> ${data.efek}</p>
+
+            <p><b>Kontraindikasi :</b> ${data.kontra}</p>
+
+            <p><b>Penyimpanan :</b> ${data.penyimpanan}</p>
+
+        </div>
+
+    `;
+
+    document.getElementById("obatSearchResult").style.display="none";
+}
+
+// =====================================
+// DATABASE OBAT
+// =====================================
+
+const obatDatabase = {
+
+paracetamol:{
+    nama:"Paracetamol",
+    icon:"💊",
+    generik:"Acetaminophen",
+    golongan:"Analgesik & Antipiretik",
+    fungsi:"Menurunkan demam dan meredakan nyeri ringan hingga sedang.",
+    dosis:"500-1000 mg setiap 4-6 jam.",
+    efek:"Mual, ruam kulit, gangguan hati bila digunakan berlebihan.",
+    kontra:"Penderita penyakit hati berat.",
+    penyimpanan:"Simpan pada suhu ruangan.",
+    keyword:["paracetamol","acetaminophen","demam","nyeri","sakit kepala"]
+},
+
+amoxicillin:{
+    nama:"Amoxicillin",
+    icon:"🔵",
+    generik:"Amoxicillin Trihydrate",
+    golongan:"Antibiotik Penisilin",
+    fungsi:"Mengobati infeksi bakteri.",
+    dosis:"250-500 mg sesuai resep dokter.",
+    efek:"Diare, mual, muntah, alergi.",
+    kontra:"Alergi penisilin.",
+    penyimpanan:"Suhu ruangan.",
+    keyword:["amoxicillin","antibiotik","infeksi","bakteri"]
+},
+
+cefadroxil: {
+      nama: "Cefadroxil",
+      icon: "🔵",
+      generik: "Cefadroxil",
+      golongan: "Antibiotik Sefalosporin",
+      fungsi: "Infeksi saluran pernapasan dan kulit.",
+      dosis: "500 mg 2x sehari.",
+      efek: "Diare, mual, alergi.",
+      kontra: "Alergi sefalosporin.",
+      penyimpanan: "Suhu ruangan.",
+      keyword: ["infeksi", "antibiotik", "bakteri"]
+},
+
+azithromycin: {
+      nama: "Azithromycin",
+      icon: "🔵",
+      generik: "Azithromycin",
+      golongan: "Antibiotik Makrolida",
+      fungsi: "Infeksi saluran napas dan kulit.",
+      dosis: "500 mg hari pertama, lalu 250 mg.",
+      efek: "Mual, diare, pusing.",
+      kontra: "Gangguan hati berat.",
+      penyimpanan: "Suhu ruangan.",
+      keyword: ["infeksi", "batuk", "antibiotik"]
+},
+
+diclofenac: {
+      nama: "Diclofenac",
+      icon: "🔴",
+      generik: "Diclofenac sodium",
+      golongan: "NSAID",
+      fungsi: "Nyeri sendi, radang, sakit otot.",
+      dosis: "50 mg 2–3x sehari.",
+      efek: "Nyeri lambung, mual, pusing.",
+      kontra: "Tukak lambung.",
+      penyimpanan: "Suhu ruangan.",
+      keyword: ["nyeri", "radang", "sendi"]
+},
+
+ibuprofen:{
+    nama:"Ibuprofen",
+    icon:"🔴",
+    generik:"Ibuprofen",
+    golongan:"NSAID",
+    fungsi:"Mengurangi nyeri, radang, dan demam.",
+    dosis:"200-400 mg setiap 4-6 jam.",
+    efek:"Nyeri lambung, mual, pusing.",
+    kontra:"Tukak lambung aktif.",
+    penyimpanan:"Suhu ruangan.",
+    keyword:["ibuprofen","radang","nyeri","demam"]
+},
+
+meloxicam: {
+      nama: "Meloxicam",
+      icon: "🔴",
+      generik: "Meloxicam",
+      golongan: "NSAID",
+      fungsi: "Radang sendi (arthritis).",
+      dosis: "7.5–15 mg per hari.",
+      efek: "Mual, gangguan lambung.",
+      kontra: "Maag berat.",
+      penyimpanan: "Suhu ruangan.",
+      keyword: ["arthritis", "nyeri", "radang"]
+},
+
+omeprazole: {
+      nama: "Omeprazole",
+      icon: "🟡",
+      generik: "Omeprazole",
+      golongan: "PPI",
+      fungsi: "Maag, GERD, tukak lambung.",
+      dosis: "20 mg sebelum makan.",
+      efek: "Sakit kepala, mual.",
+      kontra: "Gangguan hati berat.",
+      penyimpanan: "Suhu ruangan.",
+      keyword: ["maag", "asam lambung", "gerd"]
+},
+
+lansoprazole: {
+      nama: "Lansoprazole",
+      icon: "🟡",
+      generik: "Lansoprazole",
+      golongan: "PPI",
+      fungsi: "Menurunkan asam lambung.",
+      dosis: "15–30 mg sehari.",
+      efek: "Mual, diare.",
+      kontra: "Alergi PPI.",
+      penyimpanan: "Suhu ruangan.",
+      keyword: ["maag", "asam lambung"]
+},
+
+dextromethorphan: {
+      nama: "Dextromethorphan",
+      icon: "⚪",
+      generik: "Dextromethorphan HBr",
+      golongan: "Antitusif",
+      fungsi: "Meredakan batuk kering.",
+      dosis: "10–20 mg tiap 4 jam.",
+      efek: "Mengantuk, pusing.",
+      kontra: "Asma berat.",
+      penyimpanan: "Suhu ruangan.",
+      keyword: ["batuk", "kering"]
+},
+
+guaifenesin: {
+      nama: "Guaifenesin",
+      icon: "⚪",
+      generik: "Guaifenesin",
+      golongan: "Ekspektoran",
+      fungsi: "Mengencerkan dahak.",
+      dosis: "200–400 mg tiap 4 jam.",
+      efek: "Mual ringan.",
+      kontra: "Alergi.",
+      penyimpanan: "Suhu ruangan.",
+      keyword: ["batuk", "dahak", "flu"]
+},
+
+metformin: {
+      nama: "Metformin",
+      icon: "🟢",
+      generik: "Metformin HCl",
+      golongan: "Antidiabetes",
+      fungsi: "Menurunkan gula darah.",
+      dosis: "500–850 mg 2–3x sehari.",
+      efek: "Mual, diare.",
+      kontra: "Gangguan ginjal berat.",
+      penyimpanan: "Suhu ruangan.",
+      keyword: ["diabetes", "gula darah"]
+},
+
+antasida:{
+    nama:"Antasida",
+    icon:"🟡",
+    generik:"Aluminium Hydroxide + Magnesium Hydroxide",
+    golongan:"Antasida",
+    fungsi:"Mengatasi maag dan asam lambung.",
+    dosis:"Ikuti petunjuk kemasan.",
+    efek:"Diare atau sembelit.",
+    kontra:"Gangguan ginjal berat.",
+    penyimpanan:"Suhu ruangan.",
+    keyword:["antasida","maag","gerd","asam lambung"]
+  }
+};
+
+function cariObat(keyword) {
+  let hasil = [];
+
+  for (let id in obatDatabase) {
+    let obat = obatDatabase[id];
+
+    if (obat.keyword.includes(keyword)) {
+      hasil.push(obat);
     }
+  }
 
-    const semuaDetail = document.querySelectorAll(".detail-obat");
+  return hasil;
+}
 
-    semuaDetail.forEach(function(item) {
-        item.style.display = "none";
+// =====================================
+// BACK
+// =====================================
+function backToObat(){
+
+    document.getElementById("detailObatPage").style.display="none";
+
+    document.getElementById("detailObatContainer").innerHTML="";
+
+    document.getElementById("obatSearch").value="";
+}
+
+// =====================================
+// SEARCH
+// =====================================
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    const input=document.getElementById("obatSearch");
+    const hasil=document.getElementById("obatSearchResult");
+
+    if(!input || !hasil) return;
+
+    input.addEventListener("keyup",()=>{
+
+        const keyword=input.value.toLowerCase().trim();
+
+        hasil.innerHTML="";
+
+        if(keyword===""){
+
+            hasil.style.display="none";
+            return;
+
+        }
+
+        let ditemukan=[];
+
+        for(let id in obatDatabase){
+
+            const obat=obatDatabase[id];
+
+            if(
+                obat.nama.toLowerCase().includes(keyword)
+                ||
+                obat.keyword.some(k=>k.toLowerCase().includes(keyword))
+            ){
+                ditemukan.push({
+                    id:id,
+                    nama:obat.nama,
+                    icon:obat.icon,
+                    golongan:obat.golongan
+                });
+            }
+        }
+
+        if(ditemukan.length===0){
+
+            hasil.innerHTML=`
+                <div class="search-item">
+                    Obat tidak ditemukan
+                </div>
+            `;
+
+            hasil.style.display="block";
+            return;
+        }
+
+        ditemukan.forEach(obat=>{
+
+            hasil.innerHTML+=`
+
+            <div class="search-item"
+                 onclick="showObat('${obat.id}')">
+
+                <b>${obat.icon} ${obat.nama}</b><br>
+                <small>${obat.golongan}</small>
+
+            </div>
+
+            `;
+        });
+
+        hasil.style.display="block";
+
     });
 
-    const detailDipilih = document.getElementById(id);
-
-    if (detailDipilih) {
-        detailDipilih.style.display = "block";
-    }
-}
-
-function backToObat() {
-
-    const obatPage = document.getElementById("obatPage");
-    const detailPage = document.getElementById("detailObatPage");
-
-    if (detailPage) {
-        detailPage.style.display = "none";
-    }
-
-    if (obatPage) {
-        obatPage.style.display = "block";
-    }
-}
-
-console.log("Informasi Obat berhasil dimuat");
+});
 
 // ========== 12. SEARCH ARTIKEL ==========
 const articleSearch = document.getElementById("articleSearch");
@@ -439,10 +724,14 @@ articleSearch?.addEventListener("keypress", (e) => {
   }
 });
 
-// =====================================
-// FAQ INTERAKTIF
-// =====================================
+ // =====================================
+ // FAQ INTERAKTIF (CHAT + ACCORDION FIX)
+ // =====================================
 
+
+// ===============================
+// CHAT FAQ (FAQ INPUT JAWAB OTOMATIS)
+// ===============================
 function kirimPertanyaan() {
 
     const input = document.getElementById("faqInput");
@@ -450,9 +739,7 @@ function kirimPertanyaan() {
 
     const pertanyaan = input.value.trim();
 
-    if (pertanyaan === "") {
-        return;
-    }
+    if (pertanyaan === "") return;
 
     let jawaban = "Maaf, jawaban belum tersedia.";
 
@@ -469,32 +756,45 @@ function kirimPertanyaan() {
     }
 
     bulletin.innerHTML += `
-        <div class="faq-user">
-            ${pertanyaan}
-        </div>
-
-        <div class="faq-bot">
-            👨‍⚕️ ${jawaban}
-        </div>
+        <div class="faq-user">${pertanyaan}</div>
+        <div class="faq-bot">👨‍⚕️ ${jawaban}</div>
     `;
 
     input.value = "";
-
     bulletin.scrollTop = bulletin.scrollHeight;
 }
 
-  document.querySelectorAll(".faq-question").forEach(function(item){
 
-    item.addEventListener("click", function(){
+// ===============================
+// FAQ ACCORDION (KLIK BUKA/TUTUP)
+// ===============================
+document.addEventListener("DOMContentLoaded", function () {
 
-        const jawaban = this.nextElementSibling;
+});
 
-        if(jawaban.style.display === "block"){
-            jawaban.style.display = "none";
-        }else{
-            jawaban.style.display = "block";
-        }
+// =====================================
+// SHOW PAGE
+// =====================================
+function showPage(pageId){
 
+    document.querySelectorAll(".page").forEach(page=>{
+        page.style.display="none";
     });
+
+    const target =
+    document.getElementById(pageId);
+
+    if(target){
+        target.style.display="block";
+    }
+}
+
+
+// =====================================
+// SAAT HALAMAN PERTAMA KALI DIBUKA
+// =====================================
+document.addEventListener("DOMContentLoaded",()=>{
+
+    showPage("beranda");
 
 });

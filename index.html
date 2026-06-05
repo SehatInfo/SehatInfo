@@ -23,13 +23,36 @@
     </a>
 
     <ul class="nav-links">
-      <li><a href="#kesehatan">Kesehatan</a></li>
-      <li><a href="#obat">Obat</a></li>
-      <li><a href="#tips">Tips</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#kontak" class="nav-cta">Konsultasi</a></li>
-    </ul>
 
+    <li>
+        <a href="#"
+           onclick="showPage('artikel')">
+           Artikel
+        </a>
+    </li>
+
+    <li>
+        <a href="#"
+           onclick="showPage('obat')">
+           Obat
+        </a>
+    </li>
+
+    <li>
+        <a href="#"
+           onclick="showPage('tips')">
+           Tips
+        </a>
+    </li>
+
+    <li>
+        <a href="#"
+           onclick="showPage('faq')">
+           FAQ
+        </a>
+    </li>
+
+</ul>
     <button class="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -39,7 +62,7 @@
   <!-- ================================================
        HERO SECTION
   ================================================= -->
-  <section class="hero" id="beranda">
+  <section class="hero page" id="beranda">
 
     <!-- Dekorasi lingkaran latar -->
     <div class="hero-bg-decor">
@@ -59,17 +82,27 @@
       </h1>
 
       <p class="hero-desc">
-        Temukan panduan kesehatan, informasi obat, dan tips hidup sehat yang akurat,
+        Temukan panduan kesehatan, informasi obat, dan tips hidup sehat,
         mudah dipahami, dan dapat diandalkan oleh seluruh keluarga Indonesia.
       </p>
 
       <div class="hero-btns">
-        <a href="#kategori" class="btn-primary">
-    🔍 Jelajahi Artikel
-</a>
-        <a href="#obat"      class="btn-secondary">💊 Cari Obat</a>
-        <a href="#Tips Sehat" class="btn-primary">✨ Tips Sehat</a>
-
+        <a href="#" class="btn-primary"
+            onclick="showPage('artikel')">
+                🔍 Jelajahi Artikel
+        </a>
+        <a href="#" class="btn-secondary"
+            onclick="showPage('obat')">
+                💊 Cari Obat
+        </a>
+        <a href="#" class="btn-primary"
+            onclick="showPage('tips')">
+                ✨ Tips Sehat
+        </a>
+        <a href="#" class="btn-primary"
+            onclick="showPage('faq')">
+                ❓ FAQ
+        </a>
         
       </div>
 
@@ -100,7 +133,14 @@
     <!-- ================================================
      KATEGORI & ARTIKEL KESEHATAN
 ================================================= -->
-<section class="categories" id="kategori"><!-- HALAMAN 1 : KATEGORI -->
+<section class="categories page" id="artikel">
+    
+<a href="#"
+   class="back-home"
+   onclick="showPage('beranda')">
+    🏠 Kembali ke Beranda
+</a>
+    <!-- HALAMAN 1 : KATEGORI -->
 <div id="kategoriPage">
 
     <div class="section-header">
@@ -110,21 +150,27 @@
     </div>
 
     <div class="search-box">
-        <span class="search-icon">🔍</span>
 
-        <input
-            type="text"
-            class="search-input"
-            placeholder="Cari artikel kesehatan..."
-        >
+    <span class="search-icon">🔍</span>
 
-        <button class="search-btn">
-            Cari
-        </button>
-    </div>
+    <input
+        type="text"
+        id="articleSearch"
+        class="search-input"
+        placeholder="Cari artikel kesehatan..."
+        autocomplete="off"
+    >
 
-    <div class="cat-grid">
+    <button class="search-btn">
+        Cari
+    </button>
 
+    <!-- POPUP HASIL PENCARIAN -->
+    <div id="searchResult" class="search-result"></div>
+
+</div>
+    <div class="cat-grid" id="catGrid">
+        
         <div class="cat-card" onclick="showCategory('olahraga')">
             <div class="cat-icon">🏃</div>
             <h3>Olahraga</h3>
@@ -253,99 +299,67 @@
 </div>
 </section>
 
-  <!-- ================================================
-       PENCARIAN OBAT
-  ================================================= -->
-  <section class="obat" id="obat">
+<!-- ================================================
+     PENCARIAN OBAT
+================================================= -->
+<section class="obat page" id="obat">
+
+<a href="index.html" class="back-home">
+    🏠 Kembali ke Beranda
+    </a>
+
     <div class="section-header reveal">
-      <div class="section-tag">💊 Database Obat</div>
-      <h2 class="section-title">Cari Informasi Obat</h2>
-      <p class="section-subtitle">Temukan dosis, efek samping, dan kontraindikasi obat yang Anda butuhkan</p>
+        <div class="section-tag">💊 Database Obat</div>
+        <h2 class="section-title">Cari Informasi Obat</h2>
+        <p class="section-subtitle">
+            Temukan dosis, efek samping, kontraindikasi, dan informasi lengkap obat
+        </p>
     </div>
 
-    <!-- Kotak Pencarian -->
+    <!-- SEARCH -->
     <div class="search-box reveal">
-      <span class="search-icon">🔍</span>
-      <input
-        type="text"
-        class="search-input"
-        placeholder="Ketik nama obat, misalnya: Paracetamol, Amoxicillin..."
-        aria-label="Cari obat"
-      />
-      <button class="search-btn">Cari</button>
+
+        <span class="search-icon">🔍</span>
+
+        <input
+            type="text"
+            id="obatSearch"
+            class="search-input"
+            placeholder="Ketik nama obat, misalnya: Paracetamol, Amoxicillin..."
+            autocomplete="off"
+        >
+
+        <button type="button" class="search-btn">
+            Cari
+        </button>
+
+        <!-- HASIL PENCARIAN -->
+        <div id="obatSearchResult" class="search-result"></div>
+
     </div>
 
-    <!-- Kartu Obat -->
-    <div id="obatPage"><div class="obat-grid">
+    <!-- DETAIL OBAT -->
+    <div id="detailObatPage" style="display:none;">
 
-    <div class="obat-card" onclick="showObat('paracetamol')">
-        <div class="obat-icon-wrap">💊</div>
-        <div class="obat-name">Paracetamol</div>
-        <div class="obat-class">Analgesik & Antipiretik</div>
+        <button class="back-btn" onclick="backToObat()">
+            ← Kembali
+        </button>
+
+        <div id="detailObatContainer"></div>
+
     </div>
 
-    <div class="obat-card" onclick="showObat('amoxicillin')">
-        <div class="obat-icon-wrap">🔵</div>
-        <div class="obat-name">Amoxicillin</div>
-        <div class="obat-class">Antibiotik Penisilin</div>
-    </div>
-
-    <div class="obat-card" onclick="showObat('ibuprofen')">
-        <div class="obat-icon-wrap">🔴</div>
-        <div class="obat-name">Ibuprofen</div>
-        <div class="obat-class">NSAID</div>
-    </div>
-
-    <div class="obat-card" onclick="showObat('antasida')">
-        <div class="obat-icon-wrap">🟡</div>
-        <div class="obat-name">Antasida</div>
-        <div class="obat-class">Gangguan Lambung</div>
-    </div>
-
-</div>
-
-</div><div id="detailObatPage" style="display:none;"><button class="back-btn" onclick="backToObat()">
-    ← Kembali ke Daftar Obat
-</button>
-
-<div id="paracetamol" class="detail-obat" style="display:none;">
-    <h2>💊 Paracetamol</h2>
-    <p><b>Nama Generik:</b> Acetaminophen</p>
-    <p><b>Fungsi:</b> Menurunkan demam dan meredakan nyeri.</p>
-    <p><b>Dosis Dewasa:</b> 500–1000 mg setiap 4–6 jam.</p>
-    <p><b>Efek Samping:</b> Mual, ruam kulit, gangguan hati jika berlebihan.</p>
-</div>
-
-<div id="amoxicillin" class="detail-obat" style="display:none;">
-    <h2>🔵 Amoxicillin</h2>
-    <p><b>Nama Generik:</b> Amoxicillin Trihydrate</p>
-    <p><b>Fungsi:</b> Mengobati infeksi bakteri.</p>
-    <p><b>Dosis:</b> Sesuai resep dokter.</p>
-    <p><b>Efek Samping:</b> Diare, mual, alergi.</p>
-</div>
-
-<div id="ibuprofen" class="detail-obat" style="display:none;">
-    <h2>🔴 Ibuprofen</h2>
-    <p><b>Fungsi:</b> Mengurangi nyeri dan peradangan.</p>
-    <p><b>Dosis Dewasa:</b> 200–400 mg setiap 4–6 jam.</p>
-    <p><b>Efek Samping:</b> Sakit lambung, pusing.</p>
-</div>
-
-<div id="antasida" class="detail-obat" style="display:none;">
-    <h2>🟡 Antasida</h2>
-    <p><b>Fungsi:</b> Mengatasi maag dan asam lambung.</p>
-    <p><b>Dosis:</b> Ikuti petunjuk kemasan.</p>
-    <p><b>Efek Samping:</b> Sembelit atau diare.</p>
-</div>
-
-</div>
-  </section>
-
+</section>
 
   <!-- ================================================
        TIPS KESEHATAN
   ================================================= -->
-  <section class="tips" id="tips">
+  <section class="tips page" id="tips">
+
+<a href="index.html" class="back-home">
+    🏠 Kembali ke Beranda
+</a>
+
     <div class="section-header reveal">
       <div class="section-tag">✨ Tips Sehat</div>
       <h2 class="section-title">Kebiasaan Sehat Sehari-hari</h2>
@@ -398,11 +412,14 @@
     </div>
   </section>
 
-
-  <!-- ================================================
+<!-- ================================================
        FAQ
 ================================================= -->
-<section id="faq">
+<section class="page" id="faq">
+
+<a href="index.html" class="back-home">
+    🏠 Kembali ke Beranda
+</a>
 
     <div class="section-header reveal">
         <div class="section-tag">❓ FAQ</div>
@@ -414,6 +431,7 @@
 
     <div class="faq-list">
 
+        <!-- ITEM 1 (OPEN DEFAULT) -->
         <div class="faq-item reveal open">
             <div class="faq-question">
                 Apakah aman mengonsumsi obat tanpa resep dokter?
@@ -426,6 +444,7 @@
             </div>
         </div>
 
+        <!-- ITEM 2 -->
         <div class="faq-item reveal">
             <div class="faq-question">
                 Bolehkah minum dua obat berbeda secara bersamaan?
@@ -437,6 +456,7 @@
             </div>
         </div>
 
+        <!-- ITEM 3 -->
         <div class="faq-item reveal">
             <div class="faq-question">
                 Berapa lama antibiotik harus dikonsumsi?
@@ -448,6 +468,7 @@
             </div>
         </div>
 
+        <!-- ITEM 4 -->
         <div class="faq-item reveal">
             <div class="faq-question">
                 Bagaimana cara menyimpan obat yang benar?
@@ -459,6 +480,7 @@
             </div>
         </div>
 
+        <!-- ITEM 5 -->
         <div class="faq-item reveal">
             <div class="faq-question">
                 Kapan harus ke UGD dan kapan cukup ke Puskesmas?
@@ -472,23 +494,31 @@
 
     </div>
 
+<!-- ================= JS FAQ TOGGLE ================= -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach(item => {
+        const question = item.querySelector(".faq-question");
+        const icon = item.querySelector(".faq-icon");
+
+        question.addEventListener("click", () => {
+            item.classList.toggle("open");
+
+            if (item.classList.contains("open")) {
+                icon.textContent = "−";
+            } else {
+                icon.textContent = "+";
+            }
+        });
+    });
+});
+</script>
+
     <!-- ==================================
          TANYA KESEHATAN INTERAKTIF
     =================================== -->
-
-    <div class="faq-item">
-
-    <div class="faq-question">
-        💊 Apakah aman mengonsumsi obat tanpa resep dokter?
-        <span class="faq-icon">+</span>
-    </div>
-
-    <div class="faq-answer">
-        Obat bebas (OTC) umumnya aman bila dikonsumsi sesuai petunjuk pada kemasan...
-    </div>
-
-</div>
-
     <div class="faq-chat">
 
     <h3>💬 Tanya Seputar Kesehatan</h3>
@@ -520,22 +550,6 @@
 </section>
 
   <!-- ================================================
-       BANNER DARURAT
-  ================================================= -->
-  <div class="darurat-banner">
-    <div class="darurat-text">
-      <h3>🚨 Keadaan Darurat Medis?</h3>
-      <p>Hubungi layanan gawat darurat segera. Jangan tunda pertolongan pertama.</p>
-    </div>
-    <a href="RSUD Dr. Doris Sylvanus: (0536) 3224695" class="darurat-num">
-      <span>📞</span> RSUD Dr. Doris Sylvanus: (0536) 3224695 (Emergency)
-      <a href="RS Bhayangkara : 0811-5253-222" class="darurat-num">
-      <span>📞</span> RS Bhayangkara Palangka Raya: 0811-5253-222 (Emergency)
-    </a>
-  </div>
-
-
-  <!-- ================================================
        FOOTER
   ================================================= -->
   <footer id="kontak">
@@ -545,7 +559,7 @@
           <div class="logo-icon" style="width:36px;height:36px;font-size:18px;">🌿</div>
           <div class="logo-text" style="font-size:1.1rem;">Sehat<span>Info</span></div>
         </a>
-        <p>Portal informasi kesehatan dan obat terpercaya untuk seluruh keluarga Indonesia. Konten kami ditinjau oleh tim dokter profesional.</p>
+        <p> Website informasi terkait kesehatan </p>
       </div>
 
       <div class="footer-col">
@@ -553,7 +567,6 @@
         <ul class="footer-links">
           <li><a href="#">Cari Informasi Obat</a></li>
           <li><a href="#">Artikel Kesehatan</a></li>
-          <li><a href="#">Konsultasi Online</a></li>
           <li><a href="#">Cek Gejala</a></li>
         </ul>
       </div>
@@ -561,23 +574,11 @@
       <div class="footer-col">
         <h4>Tentang</h4>
         <ul class="footer-links">
-          <li><a href="C:\Users\TECNO\Downloads\web_bu,purna\kegunaan website. w">Kegunaan website ini</a></li>
-          <li><a href="C:\Users\TECNO\Downloads\web_bu,purna\penting">Hal penting yang harus diperhatikan </a></li>
-          <li><a href="C:\Users\TECNO\Downloads\web_bu,purna\metodologi konten">Metodologi Konten</a></li>
-          <li><a href="C:\Users\TECNO\Downloads\web_bu,purna\kebijakan privasi">Kebijakan Privasi</a></li>
+          <li><a href="#">Kegunaan Website Ini</a></li>
+          <li><a href="#">Hal Penting yang Harus Diperhatikan</a></li>
+          <li><a href="#">Kebijakan Privasi</a></li>
         </ul>
       </div>
-
-      <div class="footer-col">
-        <h4>Hubungi</h4>
-        <ul class="footer-links">
-          <li><a href="https://www.instagram.com/rsuddrdorissylvanus/">📱 Instagram</a></li>
-          <li><a href="https://www.instagram.com/rsbhayangkara_palangkaraya/">📱 Instagram</a></li>
-          <li><a href="https://youtu.be/9IuilMiKcTo?si=hTFslbkcKIDpBquL">▶️ YouTube</a></li>
-          <li><a href="https://youtu.be/s7x45lDcTbk?si=ek34LES_LKWPLpez">▶️ YouTube</a></li>
-        </ul>
-      </div>
-    </div>
 
     <div class="footer-bottom">
       <p>© 2026 SehatInfo. Dibuat dengan ❤️ untuk kesehatan Indonesia. Konten bersifat informatif, bukan pengganti diagnosis medis.</p>
@@ -589,28 +590,79 @@
        LINK ke script.js yang terpisah
   ================================= -->
   <script src="script.js"></script>
-  <script>
-function showCategory(kategori){
+  
+...
+<!-- HERO -->
+<section id="beranda">...</section>
 
-    document.getElementById("kategoriPage").style.display="none";
-    document.getElementById("artikelPage").style.display="block";
+<!-- ARTIKEL -->
+<section id="artikel">...</section>
 
-    document.querySelectorAll(".kategori-artikel").forEach(item=>{
-        item.style.display="none";
-    });
+<!-- OBAT -->
+<section id="obat">...</section>
 
-    document.getElementById(kategori).style.display="flex";
+<!-- TIPS -->
+<section id="tips">...</section>
 
-    document.getElementById("judulKategori").innerHTML =
-        "📚" +
-        kategori.charAt(0).toUpperCase() +
-        kategori.slice(1);
-}
-
-function backToCategory(){
-    document.getElementById("artikelPage").style.display="none";
-    document.getElementById("kategoriPage").style.display="block";
-}
+<!-- SCRIPT LAMA KAMU -->
+<script>
+  // navbar scroll
 </script>
+
+<script>
+  // hamburger
+</script>
+
+<script>
+  // scroll reveal
+</script>
+
+<script>
+  // faq
+</script>
+
+<!-- INI YANG BARU KAMU TAMBAHKAN -->
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const page =
+    new URLSearchParams(window.location.search)
+    .get("page");
+
+    const sections = [
+        "beranda",
+        "artikel",
+        "obat",
+        "tips",
+        "faq"
+    ];
+
+    if(page){
+
+        sections.forEach(id => {
+
+            const el =
+            document.getElementById(id);
+
+            if(el){
+                el.style.display = "none";
+            }
+
+        });
+
+        const aktif =
+        document.getElementById(page);
+
+        if(aktif){
+            aktif.style.display = "block";
+        }
+
+    }
+
+});
+
+</script>
+
 </body>
 </html>
