@@ -228,10 +228,10 @@ function showCategory(kategori){
     document.getElementById(kategori).style.display="flex";
 
     const judulMap={
-        olahraga:"🏃 Bulletin Olahraga",
-        penyakit:"🩺 Bulletin Penyakit",
-        kesehatan:"❤️ Bulletin Kesehatan",
-        nutrisi:"🥗 Bulletin Nutrisi"
+        olahraga:"🏃 Olahraga",
+        penyakit:"🩺  Penyakit",
+        kesehatan:"❤️  Kesehatan",
+        nutrisi:"🥗  Nutrisi"
     };
 
     document.getElementById("judulKategori")
@@ -723,47 +723,6 @@ articleSearch?.addEventListener("keypress", (e) => {
     searchArticleBtn.click();
   }
 });
-
- // =====================================
- // FAQ INTERAKTIF (CHAT + ACCORDION FIX)
- // =====================================
-
-
-// ===============================
-// CHAT FAQ (FAQ INPUT JAWAB OTOMATIS)
-// ===============================
-function kirimPertanyaan() {
-
-    const input = document.getElementById("faqInput");
-    const bulletin = document.getElementById("faqBulletin");
-
-    const pertanyaan = input.value.trim();
-
-    if (pertanyaan === "") return;
-
-    let jawaban = "Maaf, jawaban belum tersedia.";
-
-    const teks = pertanyaan.toLowerCase();
-
-    if (teks.includes("obat")) {
-        jawaban = "Penggunaan obat harus sesuai petunjuk dokter atau kemasan.";
-    } else if (teks.includes("antibiotik")) {
-        jawaban = "Antibiotik harus diminum sampai habis sesuai resep dokter.";
-    } else if (teks.includes("demam")) {
-        jawaban = "Perbanyak istirahat dan minum air putih.";
-    } else if (teks.includes("vitamin")) {
-        jawaban = "Vitamin membantu menjaga daya tahan tubuh.";
-    }
-
-    bulletin.innerHTML += `
-        <div class="faq-user">${pertanyaan}</div>
-        <div class="faq-bot">👨‍⚕️ ${jawaban}</div>
-    `;
-
-    input.value = "";
-    bulletin.scrollTop = bulletin.scrollHeight;
-}
-
 
 // ===============================
 // FAQ ACCORDION (KLIK BUKA/TUTUP)

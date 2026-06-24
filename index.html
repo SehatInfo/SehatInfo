@@ -44,14 +44,6 @@
            Tips
         </a>
     </li>
-
-    <li>
-        <a href="#"
-           onclick="showPage('faq')">
-           FAQ
-        </a>
-    </li>
-
 </ul>
     <button class="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -99,11 +91,6 @@
             onclick="showPage('tips')">
                 ✨ Tips Sehat
         </a>
-        <a href="#" class="btn-primary"
-            onclick="showPage('faq')">
-                ❓ FAQ
-        </a>
-        
       </div>
 
       <div class="hero-stats">
@@ -411,144 +398,6 @@
       </div>
     </div>
   </section>
-
-<!-- ================================================
-       FAQ
-================================================= -->
-<section class="page" id="faq">
-
-<a href="index.html" class="back-home">
-    🏠 Kembali ke Beranda
-</a>
-
-    <div class="section-header reveal">
-        <div class="section-tag">❓ FAQ</div>
-        <h2 class="section-title">Pertanyaan yang Sering Diajukan</h2>
-        <p class="section-subtitle">
-            Jawaban atas pertanyaan umum seputar kesehatan dan penggunaan obat
-        </p>
-    </div>
-
-    <div class="faq-list">
-
-        <!-- ITEM 1 (OPEN DEFAULT) -->
-        <div class="faq-item reveal open">
-            <div class="faq-question">
-                Apakah aman mengonsumsi obat tanpa resep dokter?
-                <div class="faq-icon">+</div>
-            </div>
-            <div class="faq-answer">
-                Obat bebas (OTC) umumnya aman bila dikonsumsi sesuai petunjuk pada kemasan.
-                Namun untuk kondisi kronis atau gejala yang tidak kunjung membaik dalam 3–5 hari,
-                sangat disarankan untuk berkonsultasi dengan dokter agar mendapat diagnosis dan terapi yang tepat.
-            </div>
-        </div>
-
-        <!-- ITEM 2 -->
-        <div class="faq-item reveal">
-            <div class="faq-question">
-                Bolehkah minum dua obat berbeda secara bersamaan?
-                <div class="faq-icon">+</div>
-            </div>
-            <div class="faq-answer">
-                Interaksi antar obat dapat terjadi dan berisiko. Sebelum mengombinasikan obat,
-                selalu konsultasikan dengan dokter atau apoteker.
-            </div>
-        </div>
-
-        <!-- ITEM 3 -->
-        <div class="faq-item reveal">
-            <div class="faq-question">
-                Berapa lama antibiotik harus dikonsumsi?
-                <div class="faq-icon">+</div>
-            </div>
-            <div class="faq-answer">
-                Antibiotik harus dikonsumsi hingga habis sesuai resep dokter,
-                umumnya 5–14 hari tergantung jenis infeksi.
-            </div>
-        </div>
-
-        <!-- ITEM 4 -->
-        <div class="faq-item reveal">
-            <div class="faq-question">
-                Bagaimana cara menyimpan obat yang benar?
-                <div class="faq-icon">+</div>
-            </div>
-            <div class="faq-answer">
-                Simpan obat di tempat sejuk, kering, dan terhindar dari sinar matahari langsung.
-                Periksa selalu tanggal kedaluwarsa sebelum mengonsumsi.
-            </div>
-        </div>
-
-        <!-- ITEM 5 -->
-        <div class="faq-item reveal">
-            <div class="faq-question">
-                Kapan harus ke UGD dan kapan cukup ke Puskesmas?
-                <div class="faq-icon">+</div>
-            </div>
-            <div class="faq-answer">
-                Segera ke UGD jika mengalami nyeri dada hebat, sesak napas,
-                stroke, atau cedera berat.
-            </div>
-        </div>
-
-    </div>
-
-<!-- ================= JS FAQ TOGGLE ================= -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const faqItems = document.querySelectorAll(".faq-item");
-
-    faqItems.forEach(item => {
-        const question = item.querySelector(".faq-question");
-        const icon = item.querySelector(".faq-icon");
-
-        question.addEventListener("click", () => {
-            item.classList.toggle("open");
-
-            if (item.classList.contains("open")) {
-                icon.textContent = "−";
-            } else {
-                icon.textContent = "+";
-            }
-        });
-    });
-});
-</script>
-
-    <!-- ==================================
-         TANYA KESEHATAN INTERAKTIF
-    =================================== -->
-    <div class="faq-chat">
-
-    <h3>💬 Tanya Seputar Kesehatan</h3>
-
-    <div id="faqBulletin" class="faq-bulletin">
-
-        <div class="faq-bot">
-            👨‍⚕️ Selamat datang di FAQ Kesehatan. Silakan ketik pertanyaan Anda.
-        </div>
-
-    </div>
-
-    <input
-        type="text"
-        id="faqInput"
-        placeholder="Ketik pertanyaan Anda..."
-    >
-
-    <button type="button" onclick="kirimPertanyaan()">
-        Kirim
-    </button>
-
-</div>
-
-        <div id="faqHasil"></div>
-
-    </div>
-
-</section>
-
   <!-- ================================================
        FOOTER
   ================================================= -->
